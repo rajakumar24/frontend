@@ -1,0 +1,71 @@
+.footerHead{
+    position: relative;
+}
+.footer{
+/* position: absolute; */
+bottom: 0px;
+width: 100%;
+height: 300px;
+background-color: black;
+color: white;
+
+}
+.footer1{
+    position: absolute;
+    bottom: 40px;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+    
+    margin-left: 50px;
+
+font-size: 1rem;
+color: white;
+}
+.footer2{
+    position: absolute;
+    margin-left: 550px;
+    bottom:40px;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    
+    font-size: 1rem;
+color: white;
+}
+.footer20{
+    margin-top: 20px;
+}
+.footer3{
+    position: absolute;
+    margin-left: 900px;
+    bottom: 40px;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+   
+    font-size: 1rem;
+color: white;
+}
+.footer4{
+    position: absolute;
+    margin-top: 0px;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(44, 43, 43);
+    color: rgb(172, 167, 167);
+    text-align: center;
+    }
+.footer5{
+    /* position: absolute; */
+    margin-top: 20px;
+    /* margin-left: 500px; */
+}
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+.container1{
+    font-family: 'Caveat', cursive;
+}
+.CommonFamily{
+    font-family: 'Montserrat';
+    letter-spacing: 0.1rem;
+}

@@ -1,0 +1,8 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+.container1{
+    font-family: 'Caveat', cursive;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 0.1rem;
+}
