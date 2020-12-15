@@ -51,7 +51,7 @@ class PropertyDetailUI extends React.Component {
                 <img
                   style={{ width: "360px", height: "280px" }}
                   className="property-img"
-                  src={`http://localhost:3001/uploads/${imgUrl}`}
+                  src={`http://13.126.224.81:3001/uploads/${imgUrl}`}
                   alt="Responsive"
                 />
               </div>
@@ -145,7 +145,7 @@ class PropertyDetailUI extends React.Component {
                 <div className="p-0 w-25">
                   <img
 
-                    src={`http://localhost:3001/uploads/${img}`}
+                    src={`http://13.126.224.81:3001/uploads/${img}`}
                     className="img-thumbnail border-0"
                     alt=""
                   />

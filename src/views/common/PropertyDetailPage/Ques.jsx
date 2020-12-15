@@ -110,7 +110,7 @@ console.log('appy', this.state.approve);
     console.log('app', propertyDetails.approve);
  
 
-    axios.put(`http://localhost:3001/api/property/${propertyDetails.id}`, propertyDetails)
+    axios.put(`http://13.126.224.81:3001/api/property/${propertyDetails.id}`, propertyDetails)
     .then(response => {
       
         console.log(response);

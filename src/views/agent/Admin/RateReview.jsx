@@ -141,7 +141,7 @@ class RateReview extends Component {
     };
     console.log("hiopppy", propertyDetails)
 
-    axios.put(`http://localhost:3001/api/property/${propertyDetails.id}`, propertyDetails)
+    axios.put(`http://13.126.224.81:3001/api/property/${propertyDetails.id}`, propertyDetails)
       .then(response => {
 
         console.log("response", response);
@@ -288,7 +288,7 @@ class RateReview extends Component {
                   <img
                     style={{ width: "360px", height: "280px" }}
                     className="property-img"
-                    src={`http://localhost:3001/uploads/${this.state.imgUrl}`}
+                    src={`http://13.126.224.81:3001/uploads/${this.state.imgUrl}`}
                     alt="Responsive"
                   />
                 </div>

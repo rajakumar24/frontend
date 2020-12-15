@@ -42,7 +42,7 @@ class CardSix extends React.Component {
             mobileEnquiry: this.state.mobileEnquiry,
         };
         console.log("enquiry", enquiryDetails)
-        axios.post(`http://localhost:3001/api/property/enquiry`, enquiryDetails)
+        axios.post(`http://13.126.224.81:3001/api/property/enquiry`, enquiryDetails)
             .then(response => {
                 console.log(response);
             }).catch(error => {

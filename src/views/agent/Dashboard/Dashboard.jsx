@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
     //   loading: true,
     // });
 
-    // axios.get('http://localhost:3001/api/profile/imagePost').then(({ data }) => {
+    // axios.get('http://13.126.224.81:3001/api/profile/imagePost').then(({ data }) => {
     //   this.setState({
     //     images: [...data, ...this.state.images],
     //     loading: false,
@@ -132,7 +132,7 @@ class Dashboard extends React.Component {
       this.state.selectedFile.name
     );
 
-    axios.post('http://localhost:3001/api/profile/imageUpdate', formData).then(({ data }) => {
+    axios.post('http://13.126.224.81:3001/api/profile/imageUpdate', formData).then(({ data }) => {
       console.log("data", data.fileName)
       this.setState({
         images: [data.fileName, ...this.state.images],
@@ -231,7 +231,7 @@ class Dashboard extends React.Component {
                     <Col>
                       <div className="gallery">
                         {this.state.images.map((url, i) => {
-                          return <img key={i} src={`http://localhost:3001/uploads/${url}`} />
+                          return <img key={i} src={`http://13.126.224.81:3001/uploads/${url}`} />
                         })}
                       </div>
                     </Col>

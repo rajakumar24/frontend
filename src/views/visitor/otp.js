@@ -76,7 +76,7 @@ class App extends React.Component {
         // };
         // console.log("code", textDetails.countryCode)
         console.log("code", countryCodeValue)
-        await axios.get("http://localhost:3001/api/profile/otp", {
+        await axios.get("http://13.126.224.81:3001/api/profile/otp", {
             params: {
                  email: email,
                 phone: phone,
@@ -90,7 +90,7 @@ class App extends React.Component {
         })
         .catch(err => console.log(err));
 
-        // await axios.get("http://localhost:3000/api/profile/all")
+        // await axios.get("http://13.126.224.81:3000/api/profile/all")
         //     .then(data => {
         //         console.log("oops", data.data.Text[0])
         //         this.setState({ id: data.data.Text[0].id })
@@ -102,7 +102,7 @@ class App extends React.Component {
     _verifyCode = async () => {      
         const { id, token } = this.state;
         // console.log("iddd", id)
-        await axios.get("http://localhost:3001/api/profile/verify", {
+        await axios.get("http://13.126.224.81:3001/api/profile/verify", {
             params: {
                 id: id,
                 token: token

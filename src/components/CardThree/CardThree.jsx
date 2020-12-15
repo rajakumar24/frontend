@@ -42,7 +42,7 @@ deleteProperty = id => {
               <h4>{title}</h4>
               <span className={`badge badge-${statusColor}`}>{status}</span>
 
-              <img className="card-img-top" src={`http://localhost:3001/uploads/${imgUrl}`} alt="Card cap" />
+              <img className="card-img-top" src={`http://13.126.224.81:3001/uploads/${imgUrl}`} alt="Card cap" />
             </div>
             <div className="col-lg-8 col-md-8  col-sm-8">
               <strong>Address:</strong>

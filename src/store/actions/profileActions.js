@@ -14,7 +14,7 @@ export const updateProfile = profileDetails => async dispatch => {
     type: CLEAR_MESSAGE
   });
   try {
-    const profile = await axios.post("http://localhost:3001/api/profile/update", profileDetails);
+    const profile = await axios.post("http://13.126.224.81:3001/api/profile/update", profileDetails);
     dispatch({
       type: SET_PROFILE,
       payload: profile.data
@@ -34,9 +34,9 @@ export const updateProfile = profileDetails => async dispatch => {
 
 export const getProfile = (id, history) => async dispatch => {
   try {
-    const profile = await axios.get(`http://localhost:3001/api/profile/${id}`);
+    const profile = await axios.get(`http://13.126.224.81:3001/api/profile/${id}`);
 
-    const propertyList = await axios.get(`http://localhost:3001/api/user/property/${id}`);
+    const propertyList = await axios.get(`http://13.126.224.81:3001/api/user/property/${id}`);
 
     dispatch({
       type: SET_TOTAL_COUNT,
@@ -55,7 +55,7 @@ export const getProfile = (id, history) => async dispatch => {
 
 export const getCurrentProfile = () => async dispatch => {
   try {
-    const profileData = await axios.get("http://localhost:3001/api/profile/user/current");
+    const profileData = await axios.get("http://13.126.224.81:3001/api/profile/user/current");
 
     dispatch({
       type: SET_TOTAL_COUNT,
@@ -76,11 +76,11 @@ export const getUserPropertyList = (
   pageSize
 ) => async dispatch => {
   try {
-    const propertiesList = await axios.get("http://localhost:3001/api/user/property/all", {
+    const propertiesList = await axios.get("http://13.126.224.81:3001/api/user/property/all", {
       params: { currentPage, pageSize }
     });
 
-    const totalCount = await axios.get("http://localhost:3001/api/user/propertyCount");
+    const totalCount = await axios.get("http://13.126.224.81:3001/api/user/propertyCount");
 
     dispatch({
       type: SET_TOTAL_COUNT,

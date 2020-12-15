@@ -134,7 +134,7 @@ class QuesPage extends Component {
 
         console.log("quess", propertyDetails.question)
         console.log("idd", id)
-        axios.put(`http://localhost:3001/api/property/${id}`, propertyDetails)
+        axios.put(`http://13.126.224.81:3001/api/property/${id}`, propertyDetails)
             .then(response => {
                 console.log(response);
             }).catch(error => {

@@ -73,7 +73,7 @@ class AddPropertyPage extends Component {
   //     loading: true,
   //   });
 
-  //   axios.get('http://localhost:3001/api/property/getImages').then(({ data }) => {
+  //   axios.get('http://13.126.224.81:3001/api/property/getImages').then(({ data }) => {
   //     this.setState({
   //       images: [...data, ...this.state.images],
   //       loading: false,
@@ -130,7 +130,7 @@ class AddPropertyPage extends Component {
       this.state.Imagename
     );
 
-    axios.post('http://localhost:3001/api/property/upload', formData).then(({ data }) => {
+    axios.post('http://13.126.224.81:3001/api/property/upload', formData).then(({ data }) => {
       console.log("data", data);
       this.setState({
         images: [data.fileName, ...this.state.images],
@@ -613,7 +613,7 @@ class AddPropertyPage extends Component {
               {/* <div className="gallery">{images}</div> */}
               <div className="gallery">
                 {this.state.images.map((url, i) => {
-                  return <img key={i} src={`http://localhost:3001/uploads/${url}`} />
+                  return <img key={i} src={`http://13.126.224.81:3001/uploads/${url}`} />
                 })}
               </div>
             </Col>

@@ -24,7 +24,7 @@ export default class forgetpassword extends Component {
         }
         const data = { email: this.state.email };
         axios
-            .post("http://localhost:3001/api/user/reset", data)
+            .post("http://13.126.224.81:3001/api/user/reset", data)
             .then(result => {
                 NotificationManager.success("Password Reset link sent to yout email .Please check the your email.Link Will be Valid For 30 min");
             })

@@ -112,7 +112,7 @@ console.log('appy', this.state.approve);
     // this.props.updateProperty(propertyDetails);
     //add
 
-    axios.put(`http://localhost:3001/api/property/${propertyDetails.id}`, propertyDetails)
+    axios.put(`http://13.126.224.81:3001/api/property/${propertyDetails.id}`, propertyDetails)
     .then(response => {
         // setUserSession(response.data.token, response.data.user);
         console.log(response);
