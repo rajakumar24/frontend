@@ -7,14 +7,14 @@ import { TextArea, Input } from "../../../components";
 import SelectList from "../../../components/FormElements/SelectList";
 import { AgentMenu } from "..";
 import { Spinner } from "reactstrap";
-import AdminRedirect from "./AdminRedirect"
+import AdminRedirect from "./AdminRedirect";
 import { NavLink } from "react-router-dom";
 //
-import axios from 'axios';
-import Pusher from 'pusher-js';
+import axios from "axios";
+import Pusher from "pusher-js";
 // import Spinner from 'react-spinkit';
-import { Container, Row, Col } from 'react-bootstrap'
-import './Adding.css';
+import { Container, Row, Col } from "react-bootstrap";
+import "./Adding.css";
 //
 
 class Dashboard extends React.Component {
@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
     //   loading: true,
     // });
 
-    // axios.get('http://13.126.224.81:3001/api/profile/imagePost').then(({ data }) => {
+    // axios.get('http://13.234.201.64:3001/api/profile/imagePost').then(({ data }) => {
     //   this.setState({
     //     images: [...data, ...this.state.images],
     //     loading: false,
@@ -94,29 +94,28 @@ class Dashboard extends React.Component {
         facebook: profile.socialMedia.facebook,
         twitter: profile.socialMedia.twitter,
         linkedin: profile.socialMedia.linkedin,
-        imgUrl: profile.imgUrl
+        imgUrl: profile.imgUrl,
       });
     }
   }
 
   changeText = (btnName) => {
-
     this.setState({ btnName });
-  }
+  };
 
-  onInputChange = e => {
+  onInputChange = (e) => {
     this.setState({
-      [e.currentTarget.name]: e.currentTarget.value
+      [e.currentTarget.name]: e.currentTarget.value,
     });
   };
 
   //
-  fileChangedHandler = event => {
+  fileChangedHandler = (event) => {
     const file = event.target.files[0];
     this.setState({ selectedFile: file });
   };
 
-  uploadImage = event => {
+  uploadImage = (event) => {
     event.preventDefault();
 
     if (!this.state.selectedFile) return;
@@ -127,23 +126,25 @@ class Dashboard extends React.Component {
 
     const formData = new FormData();
     formData.append(
-      'image',
+      "image",
       this.state.selectedFile,
       this.state.selectedFile.name
     );
 
-    axios.post('http://13.126.224.81:3001/api/profile/imageUpdate', formData).then(({ data }) => {
-      console.log("data", data.fileName)
-      this.setState({
-        images: [data.fileName, ...this.state.images],
-        loading: false,
-        imgUrl: data.fileName
+    axios
+      .post("http://13.234.201.64:3001/api/profile/imageUpdate", formData)
+      .then(({ data }) => {
+        console.log("data", data.fileName);
+        this.setState({
+          images: [data.fileName, ...this.state.images],
+          loading: false,
+          imgUrl: data.fileName,
+        });
       });
-    });
   };
   //
 
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
     const updateProfileDetails = {
       name: this.state.name,
@@ -171,7 +172,7 @@ class Dashboard extends React.Component {
     // );
     // const images = this.state.images.map(e => image(e.secure_url, e._id));
     //
-    const { btnName } = this.state
+    const { btnName } = this.state;
 
     if (Object.keys(this.props.message.msg).length > 0) {
       toast.success(this.props.message.msg);
@@ -182,7 +183,7 @@ class Dashboard extends React.Component {
       { label: "Choose...", value: "" },
       { label: "India", value: "india" },
       { label: "USA", value: "usa" },
-      { label: "UK", value: "uk" }
+      { label: "UK", value: "uk" },
     ];
 
     if (Object.keys(profile).length > 0) {
@@ -192,7 +193,13 @@ class Dashboard extends React.Component {
      onClick={ () => { this.changeText("Mobile Verified")}  }> {btnName} </button> */}
           <NavLink className="nav-item nav-link" to="/otp">
             <button
-              onClick={() => { this.changeText("Mobile Verified") }}> {btnName} </button>
+              onClick={() => {
+                this.changeText("Mobile Verified");
+              }}
+            >
+              {" "}
+              {btnName}{" "}
+            </button>
           </NavLink>
           <div className="">
             <Link
@@ -214,7 +221,7 @@ class Dashboard extends React.Component {
                       <form method="post" onSubmit={this.uploadImage}>
                         <label className="label" htmlFor="gallery-image">
                           Choose an image to upload
-          </label>
+                        </label>
                         <input
                           type="file"
                           onChange={this.fileChangedHandler}
@@ -225,13 +232,18 @@ class Dashboard extends React.Component {
                       </form>
 
                       <div className="loading-indicator">
-                        {this.state.loading ? <Spinner name="spinner" /> : ''}
+                        {this.state.loading ? <Spinner name="spinner" /> : ""}
                       </div>
                     </Col>
                     <Col>
                       <div className="gallery">
                         {this.state.images.map((url, i) => {
-                          return <img key={i} src={`http://13.126.224.81:3001/uploads/${url}`} />
+                          return (
+                            <img
+                              key={i}
+                              src={`http://13.234.201.64:3001/uploads/${url}`}
+                            />
+                          );
                         })}
                       </div>
                     </Col>
@@ -333,7 +345,9 @@ class Dashboard extends React.Component {
                     <div className="col-lg-6 col-md-6 col-sm-12">
                       {/* <!-- Social media --> */}
                       <div className="contact-info border border-dark p-3">
-                        <strong className="text-muted">Social accounts :</strong>
+                        <strong className="text-muted">
+                          Social accounts :
+                        </strong>
 
                         <Input
                           label="Facebook"
@@ -402,17 +416,14 @@ class Dashboard extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     message: state.message,
     errors: state.errors,
     auth: state.auth,
     profile: state.profile,
-    property: state.property
+    property: state.property,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(Dashboard);
+export default connect(mapStateToProps, actions)(Dashboard);

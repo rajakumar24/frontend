@@ -46,13 +46,13 @@ class EditPropertyPage extends Component {
     // reviewDes: "",
     reviewTitle: [],
     reviewDes: [],
-  //   obej:[{
-  //     answer: "",
-  //     question: ""
-  //   }
-  //  ],
-     ansmark: "answer",
-    errors: {}
+    //   obej:[{
+    //     answer: "",
+    //     question: ""
+    //   }
+    //  ],
+    ansmark: "answer",
+    errors: {},
   };
 
   componentWillMount() {
@@ -69,7 +69,7 @@ class EditPropertyPage extends Component {
         : currentTarget.value;
 
     this.setState({
-      [currentTarget.name]: value
+      [currentTarget.name]: value,
     });
   };
 
@@ -81,21 +81,20 @@ class EditPropertyPage extends Component {
 
   // };
 
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
 
     const { ansmark, answer } = this.state;
-    if(ansmark != null){
-      this.state.answer =  this.state.answer || [];
-      this.state.answer.push(ansmark)
-    }else{
-      return alert("Please Enter Your Answer First1!")
+    if (ansmark != null) {
+      this.state.answer = this.state.answer || [];
+      this.state.answer.push(ansmark);
+    } else {
+      return alert("Please Enter Your Answer First1!");
     }
-    
 
     // const { obej } = this.state;
 
-    console.log("question", this.state.answer)
+    console.log("question", this.state.answer);
     const propertyDetails = {
       id: this.state.id,
       title: this.state.title,
@@ -129,22 +128,26 @@ class EditPropertyPage extends Component {
       question: this.state.question,
       reviewTitle: this.state.reviewTitle,
       reviewDes: this.state.reviewDes,
-      answer
+      answer,
       //obej
     };
 
     // this.props.updateProperty(propertyDetails);
-    axios.put(`http://13.126.224.81:3001/api/property/${propertyDetails.id}`, propertyDetails)
-      .then(response => {
+    axios
+      .put(
+        `http://13.234.201.64:3001/api/property/${propertyDetails.id}`,
+        propertyDetails
+      )
+      .then((response) => {
         // setUserSession(response.data.token, response.data.user);
         console.log(response);
-      }).catch(error => {
+      })
+      .catch((error) => {
         console.log("Error", error);
-
       });
   };
 
-  numbersOnly = e => {
+  numbersOnly = (e) => {
     const price = e.currentTarget.value;
 
     if (isNaN(price) || price === "0") {
@@ -158,11 +161,9 @@ class EditPropertyPage extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
-
-
 
     if (Object.keys(nextProps.property.property).length > 0) {
       const property = nextProps.property.property;
@@ -202,7 +203,7 @@ class EditPropertyPage extends Component {
         reviewDes: property.reviewDes,
         //obej:property.obej
       });
-      console.log("ques", this.state.garages)
+      console.log("ques", this.state.garages);
     }
   }
 
@@ -213,19 +214,19 @@ class EditPropertyPage extends Component {
       { label: "Select...", value: "" },
       { label: "India", value: "india" },
       { label: "USA", value: "usa" },
-      { label: "UK", value: "uk" }
+      { label: "UK", value: "uk" },
     ];
     const propertyType = [
       { label: "Select...", value: "" },
       { label: "Apartment", value: "apartment" },
       { label: "Flat", value: "flat" },
       { label: "House", value: "house" },
-      { label: "Cottage", value: "cottage" }
+      { label: "Cottage", value: "cottage" },
     ];
     const propertyStatus = [
       { label: "Select...", value: "" },
       { label: "Rent", value: "rent" },
-      { label: "Sale", value: "sale" }
+      { label: "Sale", value: "sale" },
     ];
 
     let renderContent;
@@ -522,36 +523,37 @@ class EditPropertyPage extends Component {
               />
             </div>
 
-
             <br />
             <h2>your updates</h2>
             {/* add */}
             {
               // this.state.obej.length && this.state.obej.map((list, index) => {
-                this.state.question != null && this.state.question.map((list, index) => {
-                console.log("list", list);
-                return (
+              this.state.question != null &&
+                this.state.question.map((list, index) => {
+                  console.log("list", list);
+                  return (
+                    <div className="container" key={index}>
+                      {/* <p>question: {list.question}</p> */}
+                      <p>question: {list}</p>
+                      <br />
+                      <TextArea
+                        classes="col-md-12"
+                        label="answer"
+                        name="answer"
+                        placeholder="answer..."
+                        onChange={(e) =>
+                          this.setState({ ansmark: e.target.value })
+                        }
+                        // onChange={(e) => this.setState({ obej: {question: {list}, answer: e.target.value } })}
+                        value={this.state.answer[index]}
+                        // value={list.answer}
 
-                  <div className="container" key={index}>
-                    {/* <p>question: {list.question}</p> */}
-                    <p>question: {list}</p>
-                    <br />
-                    <TextArea
-                      classes="col-md-12"
-                      label="answer"
-                      name="answer"
-                      placeholder="answer..."
-                      onChange={(e) => this.setState({ ansmark: e.target.value })}
-                      // onChange={(e) => this.setState({ obej: {question: {list}, answer: e.target.value } })}
-                      value={this.state.answer[index]}
-                      // value={list.answer}
-                      
-                      // error={this.props.errors.answer}
-                    />
-                    <br />
-                  </div>
-                );
-              })
+                        // error={this.props.errors.answer}
+                      />
+                      <br />
+                    </div>
+                  );
+                })
             }
             {/* add */}
 
@@ -638,14 +640,11 @@ class EditPropertyPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     errors: state.errors,
-    property: state.property
+    property: state.property,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(EditPropertyPage);
+export default connect(mapStateToProps, actions)(EditPropertyPage);

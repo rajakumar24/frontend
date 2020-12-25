@@ -19,7 +19,7 @@ class PropertyPageUI extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {dataList.map(property => {
+                {dataList.map((property) => {
                   return (
                     <tr key={property._id}>
                       <td>
@@ -38,7 +38,7 @@ class PropertyPageUI extends React.Component {
                         </p>
 
                         <img
-                          src={`http://13.126.224.81:3001/uploads/${property.imgUrl}`}
+                          src={`http://13.234.201.64:3001/uploads/${property.imgUrl}`}
                           style={{ width: "150px", height: "100px" }}
                           className=" img-thumbnail border-0"
                           alt=""

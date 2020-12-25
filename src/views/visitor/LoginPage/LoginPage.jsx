@@ -26,11 +26,11 @@ class LoginPage extends React.Component {
     }
   }
 
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
     const loginDetail = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
 
     this.props.loginUser(loginDetail);
@@ -38,7 +38,7 @@ class LoginPage extends React.Component {
 
   onInputChange = ({ currentTarget }) => {
     this.setState({
-      [currentTarget.name]: currentTarget.value
+      [currentTarget.name]: currentTarget.value,
     });
   };
   render() {
@@ -76,15 +76,12 @@ class LoginPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     message: state.message,
     errors: state.errors,
-    auth: state.auth
+    auth: state.auth,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(LoginPage);
+export default connect(mapStateToProps, actions)(LoginPage);

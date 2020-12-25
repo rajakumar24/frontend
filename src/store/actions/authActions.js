@@ -4,28 +4,31 @@ import {
   CLEAR_CURRENT_USER,
   CLEAR_ERRORS,
   CLEAR_MESSAGE,
-  SET_MESSAGE
+  SET_MESSAGE,
 } from "../types";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../../utils/setAuthToken";
 
-export const registerUser = (userData, history) => async dispatch => {
+export const registerUser = (userData, history) => async (dispatch) => {
   dispatch({
-    type: CLEAR_MESSAGE
+    type: CLEAR_MESSAGE,
   });
   dispatch({
-    type: CLEAR_ERRORS
+    type: CLEAR_ERRORS,
   });
   try {
-    const res = await axios.post("http://13.126.224.81:3001/api/user/register", userData);
+    const res = await axios.post(
+      "http://13.234.201.64:3001/api/user/register",
+      userData
+    );
 
     dispatch({
       type: SET_MESSAGE,
-      payload: res.data.msg
+      payload: res.data.msg,
     });
     dispatch({
-      type: CLEAR_MESSAGE
+      type: CLEAR_MESSAGE,
     });
   } catch (err) {
     dispatch({
@@ -33,17 +36,20 @@ export const registerUser = (userData, history) => async dispatch => {
       //payload: err.response.data
     });
     dispatch({
-      type: CLEAR_ERRORS
+      type: CLEAR_ERRORS,
     });
   }
 };
 
-export const loginUser = userData => async dispatch => {
+export const loginUser = (userData) => async (dispatch) => {
   dispatch({
-    type: CLEAR_ERRORS
+    type: CLEAR_ERRORS,
   });
   try {
-    const res = await axios.post("http://13.126.224.81:3001/api/user/login", userData);
+    const res = await axios.post(
+      "http://13.234.201.64:3001/api/user/login",
+      userData
+    );
     if (res.data) {
       const { token } = res.data;
       localStorage.setItem("jwtToken", token);
@@ -55,27 +61,27 @@ export const loginUser = userData => async dispatch => {
   } catch (error) {
     dispatch({
       type: SET_ERRORS,
-     // payload: error.response.data
+      // payload: error.response.data
     });
   }
 };
 
-export const setCurrentUser = decoded => {
+export const setCurrentUser = (decoded) => {
   return {
     type: SET_CURRENT_USER,
-    payload: decoded
+    payload: decoded,
   };
 };
 
 export const clearCurrentUser = () => {
   return {
     type: CLEAR_CURRENT_USER,
-    payload: {}
+    payload: {},
   };
 };
 
 // Log user out
-export const logoutUser = () => dispatch => {
+export const logoutUser = () => (dispatch) => {
   // Remove token from localStorage
   localStorage.removeItem("jwtToken");
   // Remove auth header for future requests
@@ -84,14 +90,14 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 };
 
-export const clearError = () => dispatch => {
+export const clearError = () => (dispatch) => {
   dispatch({
-    type: CLEAR_ERRORS
+    type: CLEAR_ERRORS,
   });
 };
 
-export const clearMessage = () => dispatch => {
+export const clearMessage = () => (dispatch) => {
   dispatch({
-    type: CLEAR_MESSAGE
+    type: CLEAR_MESSAGE,
   });
 };

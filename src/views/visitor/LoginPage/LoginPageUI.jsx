@@ -2,7 +2,7 @@ import React from "react";
 // import ForgetPassword from '../forgetpassword';
 import { NavLink } from "react-router-dom";
 
-const LoginPageUI = props => {
+const LoginPageUI = (props) => {
   return (
     <div className="container">
       <div className="row my-5">
@@ -15,10 +15,9 @@ const LoginPageUI = props => {
             </div>
           </form>
           <NavLink className="nav-item nav-link" to="/forget-password">
-          ForgetPassword?
-        </NavLink>
+            ForgetPassword?
+          </NavLink>
         </div>
-        
       </div>
       {/* <NavLink className="nav-item nav-link" to="/forget-password">
           ForgetPassword

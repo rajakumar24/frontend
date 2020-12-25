@@ -3,7 +3,13 @@ import React from "react";
 class AgentProfileUI extends React.Component {
   render() {
     const { name, email } = this.props.profileData.user;
-    const { about, mobile, skype, socialMedia, imgUrl } = this.props.profileData;
+    const {
+      about,
+      mobile,
+      skype,
+      socialMedia,
+      imgUrl,
+    } = this.props.profileData;
 
     console.log("checked", this.props.profileData);
     let renderContent;
@@ -14,8 +20,7 @@ class AgentProfileUI extends React.Component {
           <div className="d-flex flex-row border rounded">
             <div className="p-0 w-25">
               <img
-              
-                src={`http://13.126.224.81:3001/uploads/${imgUrl}`}
+                src={`http://13.234.201.64:3001/uploads/${imgUrl}`}
                 className="img-thumbnail border-0"
                 alt=""
               />

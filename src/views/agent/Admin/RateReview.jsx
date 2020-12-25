@@ -5,7 +5,7 @@ import { Input, TextArea, SelectList, CheckBox } from "../../../components";
 // import { AgentMenu } from "..";
 import { Spinner } from "reactstrap";
 import axios from "axios";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 class RateReview extends Component {
@@ -66,21 +66,24 @@ class RateReview extends Component {
         : currentTarget.value;
 
     this.setState({
-      [currentTarget.name]: value
+      [currentTarget.name]: value,
     });
   };
 
-
-
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
 
-    const { reviewDesMark, reviewTitleMark, reviewDes, reviewTitle } = this.state;
+    const {
+      reviewDesMark,
+      reviewTitleMark,
+      reviewDes,
+      reviewTitle,
+    } = this.state;
     //    this.setState(prevState => {
     //        const temp = prevState.reviewDes;
     //        temp.push(reviewDesMark);
     //        return {
-    //         reviewDes:temp  
+    //         reviewDes:temp
     //        }
     //    })
     reviewDes.push(reviewDesMark);
@@ -94,13 +97,11 @@ class RateReview extends Component {
     this.setState({
       redirect: true,
       reviewDes,
-      reviewTitle
-
+      reviewTitle,
     });
 
     // console.log("hiopppy", this.state.reviewDes)
     //  console.log("hiopppy", this.state.reviewTitle)
-
 
     const propertyDetails = {
       id: this.state.id,
@@ -137,25 +138,25 @@ class RateReview extends Component {
       // obej,
       reviewTitle,
       reviewDes,
-      approve: this.state.approve
+      approve: this.state.approve,
     };
-    console.log("hiopppy", propertyDetails)
+    console.log("hiopppy", propertyDetails);
 
-    axios.put(`http://13.126.224.81:3001/api/property/${propertyDetails.id}`, propertyDetails)
-      .then(response => {
-
+    axios
+      .put(
+        `http://13.234.201.64:3001/api/property/${propertyDetails.id}`,
+        propertyDetails
+      )
+      .then((response) => {
         console.log("response", response);
-        this.props.getProperty(this.props.match.params.id, this.props.history)
-
-      }).catch(error => {
+        this.props.getProperty(this.props.match.params.id, this.props.history);
+      })
+      .catch((error) => {
         console.log("Error", error);
-
       });
-
   };
 
-
-  numbersOnly = e => {
+  numbersOnly = (e) => {
     const price = e.currentTarget.value;
 
     if (isNaN(price) || price === "0") {
@@ -169,7 +170,7 @@ class RateReview extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
 
@@ -210,21 +211,19 @@ class RateReview extends Component {
         // reviewTitle: property.reviewTitle,
         // reviewDes: property.reviewDes,
         // obej: property.obej,
-        approve: property.approve
+        approve: property.approve,
       });
       if (property.reviewTitle && property.reviewDes) {
         this.setState({
           reviewTitle: property.reviewTitle,
           reviewDes: property.reviewDes,
-        })
+        });
       }
       //   console.log("hip", property.reviewTitle)
     }
-
   }
 
   render() {
-
     const { reviewDes, reviewTitle } = this.state;
 
     // const {obej} = this.state;
@@ -252,19 +251,19 @@ class RateReview extends Component {
       { label: "Select...", value: "" },
       { label: "India", value: "india" },
       { label: "USA", value: "usa" },
-      { label: "UK", value: "uk" }
+      { label: "UK", value: "uk" },
     ];
     const propertyType = [
       { label: "Select...", value: "" },
       { label: "Apartment", value: "apartment" },
       { label: "Flat", value: "flat" },
       { label: "House", value: "house" },
-      { label: "Cottage", value: "cottage" }
+      { label: "Cottage", value: "cottage" },
     ];
     const propertyStatus = [
       { label: "Select...", value: "" },
       { label: "Rent", value: "rent" },
-      { label: "Sale", value: "sale" }
+      { label: "Sale", value: "sale" },
     ];
 
     // const ApproveStatus = [
@@ -284,11 +283,13 @@ class RateReview extends Component {
             <div className="col-lg-4 col-md-4 col-sm-12">
               <div className="row mt-4">
                 <div className="col-lg-12 col-md-12 col-sm-12">
-                  <span className={`badge badge-${statusColor}`}>{this.state.status}</span>
+                  <span className={`badge badge-${statusColor}`}>
+                    {this.state.status}
+                  </span>
                   <img
                     style={{ width: "360px", height: "280px" }}
                     className="property-img"
-                    src={`http://13.126.224.81:3001/uploads/${this.state.imgUrl}`}
+                    src={`http://13.234.201.64:3001/uploads/${this.state.imgUrl}`}
                     alt="Responsive"
                   />
                 </div>
@@ -425,8 +426,6 @@ class RateReview extends Component {
             </div>*/}
             </div>
           </div>
-
-
 
           <form onSubmit={this.onFormSubmit}>
             {/* <div className="basic-info"> */}
@@ -744,7 +743,9 @@ class RateReview extends Component {
               label="reviewTitle"
               name="reviewTitle"
               placeholder="reviewTitle..."
-              onChange={(e) => this.setState({ reviewTitleMark: e.target.value })}
+              onChange={(e) =>
+                this.setState({ reviewTitleMark: e.target.value })
+              }
               // value={this.state.approve}
               error={this.props.errors.reviewTitle}
             />
@@ -755,7 +756,6 @@ class RateReview extends Component {
               name="reviewDes"
               placeholder="reviewDes..."
               onChange={(e) => this.setState({ reviewDesMark: e.target.value })}
-
               // value={this.state.question}
               error={this.props.errors.reviewDes}
             />
@@ -763,7 +763,7 @@ class RateReview extends Component {
             <br />
             <button type="submit" className="btn btn-block btn-primary">
               Submit
-          </button>
+            </button>
           </form>
         </React.Fragment>
       );
@@ -781,7 +781,6 @@ class RateReview extends Component {
     return (
       <div className="container-fluid">
         <div className="row">
-
           {/* left section */}
 
           {/* <!-- right section --> */}
@@ -795,21 +794,15 @@ class RateReview extends Component {
             {renderContent}
 
             {/* add */}
-            {
-              reviewTitle.length && reviewTitle.map((listss, index) => {
-
-
+            {reviewTitle.length &&
+              reviewTitle.map((listss, index) => {
                 return (
-
                   <div className="container" key={index}>
-
                     <p>reviewTitle: {listss}</p>
                     <p>reviewDes: {reviewDes[index]}</p>
-
                   </div>
                 );
-              })
-            }
+              })}
 
             {/* {
               answer.length && answer.map((lists, index) => {
@@ -824,7 +817,6 @@ class RateReview extends Component {
               })
             } */}
             {/* add */}
-
           </div>
           {/* <p>question: {this.state.question}</p>
           <p>answer: {this.state.answer}</p> */}
@@ -834,14 +826,11 @@ class RateReview extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     errors: state.errors,
-    property: state.property
+    property: state.property,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(RateReview);
+export default connect(mapStateToProps, actions)(RateReview);

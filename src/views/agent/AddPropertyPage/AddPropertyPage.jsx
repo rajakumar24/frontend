@@ -5,12 +5,12 @@ import * as actions from "../../../store/actions";
 import { Input, TextArea, SelectList, CheckBox } from "../../../components/";
 import { AgentMenu } from "..";
 //
-import axios from 'axios';
-import Pusher from 'pusher-js';
-import Spinner from 'react-spinkit';
-import { Container, Row, Col } from 'react-bootstrap'
-import './Add.css';
-import Map from "./location/Location"
+import axios from "axios";
+import Pusher from "pusher-js";
+import Spinner from "react-spinkit";
+import { Container, Row, Col } from "react-bootstrap";
+import "./Add.css";
+import Map from "./location/Location";
 //
 
 class AddPropertyPage extends Component {
@@ -65,7 +65,7 @@ class AddPropertyPage extends Component {
     //  ],
     count: 0,
     Imagename: "",
-    errors: {}
+    errors: {},
   };
 
   // componentDidMount() {
@@ -73,7 +73,7 @@ class AddPropertyPage extends Component {
   //     loading: true,
   //   });
 
-  //   axios.get('http://13.126.224.81:3001/api/property/getImages').then(({ data }) => {
+  //   axios.get('http://13.234.201.64:3001/api/property/getImages').then(({ data }) => {
   //     this.setState({
   //       images: [...data, ...this.state.images],
   //       loading: false,
@@ -94,28 +94,37 @@ class AddPropertyPage extends Component {
   // }
 
   //
-  fileChangedHandler = event => {
+  fileChangedHandler = (event) => {
     const file = event.target.files[0];
     this.setState({ selectedFile: file });
   };
 
-  uploadImage = event => {
+  uploadImage = (event) => {
     event.preventDefault();
 
     if (this.state.count === 0) {
-      return this.setState({ Imagename: this.state.title, count: this.state.count + 1 })
+      return this.setState({
+        Imagename: this.state.title,
+        count: this.state.count + 1,
+      });
     } else if (this.state.count === 1) {
-
-      this.setState({ Imagename: `${this.state.title + this.state.price}`, count: this.state.count + 1 })
+      this.setState({
+        Imagename: `${this.state.title + this.state.price}`,
+        count: this.state.count + 1,
+      });
     } else if (this.state.count === 2) {
-
-      this.setState({ Imagename: `${this.state.title + this.state.lat}`, count: this.state.count + 1 })
+      this.setState({
+        Imagename: `${this.state.title + this.state.lat}`,
+        count: this.state.count + 1,
+      });
     } else {
-
-      this.setState({ Imagename: `${this.state.title + this.state.count}`, count: this.state.count + 1 })
+      this.setState({
+        Imagename: `${this.state.title + this.state.count}`,
+        count: this.state.count + 1,
+      });
     }
 
-    console.log("title", this.state.Imagename)
+    console.log("title", this.state.Imagename);
 
     if (!this.state.selectedFile) return;
 
@@ -124,28 +133,26 @@ class AddPropertyPage extends Component {
     });
 
     const formData = new FormData();
-    formData.append(
-      'image',
-      this.state.selectedFile,
-      this.state.Imagename
-    );
+    formData.append("image", this.state.selectedFile, this.state.Imagename);
 
-    axios.post('http://13.126.224.81:3001/api/property/upload', formData).then(({ data }) => {
-      console.log("data", data);
-      this.setState({
-        images: [data.fileName, ...this.state.images],
-        loading: false,
-        imgUrl: data.fileName
+    axios
+      .post("http://13.234.201.64:3001/api/property/upload", formData)
+      .then(({ data }) => {
+        console.log("data", data);
+        this.setState({
+          images: [data.fileName, ...this.state.images],
+          loading: false,
+          imgUrl: data.fileName,
+        });
       });
-    });
   };
   //
   mapInfo = (lat, long) => {
     this.setState({
       lat: lat,
-      lng: long
+      lng: long,
     });
-  }
+  };
 
   handleInputChange = ({ currentTarget }) => {
     const value =
@@ -154,14 +161,14 @@ class AddPropertyPage extends Component {
         : currentTarget.value;
 
     this.setState({
-      [currentTarget.name]: value
+      [currentTarget.name]: value,
     });
   };
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
     //add
     this.setState({
-      approve: "UnApproved"
+      approve: "UnApproved",
     });
     //add
     const propertyDetails = {
@@ -196,14 +203,14 @@ class AddPropertyPage extends Component {
       question: this.state.question,
       answer: this.state.answer,
       reviewTitle: this.state.reviewTitle,
-      reviewDes: this.state.reviewDes
+      reviewDes: this.state.reviewDes,
       // obej: this.state.obej
     };
 
     this.props.addProperty(propertyDetails);
   };
 
-  startWithNonZero = e => {
+  startWithNonZero = (e) => {
     const price = e.currentTarget.value;
 
     if (isNaN(price) || price === "0") {
@@ -213,7 +220,7 @@ class AddPropertyPage extends Component {
     if (price) {
     }
   };
-  numbersOnly = e => {
+  numbersOnly = (e) => {
     const value = e.currentTarget.value;
 
     if (isNaN(value)) {
@@ -226,7 +233,7 @@ class AddPropertyPage extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
   }
@@ -247,25 +254,22 @@ class AddPropertyPage extends Component {
       { label: "Select...", value: "" },
       { label: "India", value: "india" },
       { label: "USA", value: "usa" },
-      { label: "UK", value: "uk" }
+      { label: "UK", value: "uk" },
     ];
     const propertyType = [
       { label: "Select...", value: "" },
       { label: "Apartment", value: "apartment" },
       { label: "Flat", value: "flat" },
       { label: "House", value: "house" },
-      { label: "Cottage", value: "cottage" }
+      { label: "Cottage", value: "cottage" },
     ];
     const propertyStatus = [
       { label: "Select...", value: "" },
       { label: "Rent", value: "rent" },
-      { label: "Sale", value: "sale" }
+      { label: "Sale", value: "sale" },
     ];
     return (
       <div className="container-fluid">
-
-
-
         <div className="row">
           {/* left section */}
           <AgentMenu />
@@ -588,23 +592,26 @@ class AddPropertyPage extends Component {
             <Col>
               <form method="post" onSubmit={this.uploadImage}>
                 <div className="ImageContainer">
-                  <h4 style={{ marginTop: "10px" }}>Please Upload Image Here!</h4>
+                  <h4 style={{ marginTop: "10px" }}>
+                    Please Upload Image Here!
+                  </h4>
                   <label className="label" htmlFor="gallery-image">
                     Choose an image to upload
-          </label>
+                  </label>
                   <input
                     type="file"
                     onChange={this.fileChangedHandler}
                     id="gallery-image"
                     accept=".jpg, .jpeg, .png"
                   />
-
                 </div>
-                <button style={{ marginTop: "10px" }} type="submit">Upload!</button>
+                <button style={{ marginTop: "10px" }} type="submit">
+                  Upload!
+                </button>
               </form>
 
               <div className="loading-indicator">
-                {this.state.loading ? <Spinner name="spinner" /> : ''}
+                {this.state.loading ? <Spinner name="spinner" /> : ""}
               </div>
             </Col>
           </Row>
@@ -613,7 +620,12 @@ class AddPropertyPage extends Component {
               {/* <div className="gallery">{images}</div> */}
               <div className="gallery">
                 {this.state.images.map((url, i) => {
-                  return <img key={i} src={`http://13.126.224.81:3001/uploads/${url}`} />
+                  return (
+                    <img
+                      key={i}
+                      src={`http://13.234.201.64:3001/uploads/${url}`}
+                    />
+                  );
                 })}
               </div>
             </Col>
@@ -625,15 +637,12 @@ class AddPropertyPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     message: state.message,
     errors: state.errors,
-    property: state.property
+    property: state.property,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(AddPropertyPage);
+export default connect(mapStateToProps, actions)(AddPropertyPage);

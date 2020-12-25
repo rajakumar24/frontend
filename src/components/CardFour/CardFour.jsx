@@ -6,10 +6,10 @@ import * as actions from "../../store/actions";
 import { Popup } from "../../components";
 
 class CardFour extends React.Component {
-// added
-deleteProperty = id => {
-  this.props.deleteProperty(id);
-};
+  // added
+  deleteProperty = (id) => {
+    this.props.deleteProperty(id);
+  };
 
   render() {
     const {
@@ -29,7 +29,7 @@ deleteProperty = id => {
       garages,
       // added2
       // deleteProperty
-      approveid
+      approveid,
     } = this.props;
     let statusColor = status === "rent" ? "warning" : "success";
 
@@ -41,7 +41,11 @@ deleteProperty = id => {
               <h4>{title}</h4>
               <span className={`badge badge-${statusColor}`}>{status}</span>
 
-              <img className="card-img-top" src={`http://13.126.224.81:3001/uploads/${imgUrl}`}  alt="Card cap" />
+              <img
+                className="card-img-top"
+                src={`http://13.234.201.64:3001/uploads/${imgUrl}`}
+                alt="Card cap"
+              />
             </div>
             <div className="col-lg-8 col-md-8  col-sm-8">
               <strong>Address:</strong>
@@ -59,15 +63,14 @@ deleteProperty = id => {
                   className="btn btn-primary"
                 >
                   <i className="fa fa-edit" /> Edit
-                          </Link>
-                          <strong>{approveid}</strong>
+                </Link>
+                <strong>{approveid}</strong>
                 <Popup
                   buttonLabel="delete"
                   modelTitle={`${title}`}
                   deleteProperty={this.deleteProperty}
                   id={id}
                 />
-
               </div>
               {/* added1 */}
               <br />

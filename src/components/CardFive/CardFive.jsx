@@ -7,7 +7,7 @@ import { Popup } from "../../components";
 
 class CardFive extends React.Component {
   // added
-  deleteProperty = id => {
+  deleteProperty = (id) => {
     this.props.deleteProperty(id);
   };
 
@@ -29,7 +29,7 @@ class CardFive extends React.Component {
       garages,
       // added2
       // deleteProperty
-      approveid
+      approveid,
     } = this.props;
     console.log("rp", id);
     let statusColor = status === "rent" ? "warning" : "success";
@@ -45,11 +45,13 @@ class CardFive extends React.Component {
               {/* <img className="card-img-top" src={imgUrl} alt="Card cap" /> */}
 
               {/* {imgUrl.map((url, i) => {
-                return <img className="card-img-top" key={i} src={`http://13.126.224.81:3001/uploads/${url}`} />
+                return <img className="card-img-top" key={i} src={`http://13.234.201.64:3001/uploads/${url}`} />
               })} */}
 
-              <img className="card-img-top" src={`http://13.126.224.81:3001/uploads/${imgUrl}`} />
-
+              <img
+                className="card-img-top"
+                src={`http://13.234.201.64:3001/uploads/${imgUrl}`}
+              />
             </div>
             <div className="col-lg-8 col-md-8  col-sm-8">
               <strong>Address:</strong>
@@ -62,12 +64,9 @@ class CardFive extends React.Component {
 
               {/* added 1 */}
               <div className="w-75 d-flex justify-content-around   ">
-                <Link
-                  to={`/agent/AdminQues/${id}`}
-                  className="btn btn-primary"
-                >
+                <Link to={`/agent/AdminQues/${id}`} className="btn btn-primary">
                   <i className="fa fa-edit" /> Visit Property
-                          </Link>
+                </Link>
                 <strong>{approveid}</strong>
                 <Popup
                   buttonLabel="delete"
@@ -75,7 +74,6 @@ class CardFive extends React.Component {
                   deleteProperty={this.deleteProperty}
                   id={id}
                 />
-
               </div>
               {/* added1 */}
               <br />

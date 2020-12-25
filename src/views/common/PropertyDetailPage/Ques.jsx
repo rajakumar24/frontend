@@ -41,7 +41,7 @@ class Ques extends Component {
     approve: "",
     question: "",
     answer: "",
-    errors: {}
+    errors: {},
   };
 
   componentWillMount() {
@@ -58,21 +58,18 @@ class Ques extends Component {
         : currentTarget.value;
 
     this.setState({
-      [currentTarget.name]: value
+      [currentTarget.name]: value,
     });
-
   };
 
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
 
+    this.setState({
+      redirect: true,
+    });
 
-this.setState({
-  redirect: true,
- 
-});
-
-console.log('appy', this.state.approve);
+    console.log("appy", this.state.approve);
 
     const propertyDetails = {
       id: this.state.id,
@@ -105,25 +102,24 @@ console.log('appy', this.state.approve);
       tv: this.state.tv,
       question: this.state.question,
       answer: this.state.answer,
-      approve: this.state.approve
+      approve: this.state.approve,
     };
-    console.log('app', propertyDetails.approve);
- 
+    console.log("app", propertyDetails.approve);
 
-    axios.put(`http://13.126.224.81:3001/api/property/${propertyDetails.id}`, propertyDetails)
-    .then(response => {
-      
+    axios
+      .put(
+        `http://13.234.201.64:3001/api/property/${propertyDetails.id}`,
+        propertyDetails
+      )
+      .then((response) => {
         console.log(response);
-    }).catch(error => {
+      })
+      .catch((error) => {
         console.log("Error", error);
-
-    });
-
+      });
   };
 
-
-
-  numbersOnly = e => {
+  numbersOnly = (e) => {
     const price = e.currentTarget.value;
 
     if (isNaN(price) || price === "0") {
@@ -137,7 +133,7 @@ console.log('appy', this.state.approve);
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
 
@@ -174,118 +170,118 @@ console.log('appy', this.state.approve);
         tv: property.features.tv,
         question: property.question,
         answer: property.answer,
-        approve: property.approve
+        approve: property.approve,
       });
     }
   }
 
   render() {
-
-
     const { property } = this.props.property;
 
     let renderContent;
 
     if (Object.keys(property).length > 0) {
-        let statusColor = this.state.status === "rent" ? "warning" : "success";
-        renderContent = (
-            <React.Fragment>
-              <h1 className="display-4 my-5 text-center">{this.state.title}</h1>
-              <div className="row mt-5">
-                <div className="col-lg-4 col-md-4 col-sm-12">
-                  <div className="row mt-4">
-                    <div className="col-lg-12 col-md-12 col-sm-12">
-                      <span className={`badge badge-${statusColor}`}>{this.state.status}</span>
-                      <img
-                        style={{ width: "360px", height: "280px" }}
-                        className="property-img"
-                        src={this.state.imgUrl}
-                        alt="Responsive"
-                      />
-                    </div>
-      
-                    <div className="col-lg-12 col-md-12 col-sm-12">
-                      <p className="mt-3">
-                        <strong>Quick Summary:</strong>
-                      </p>
-                      <div className="table-responsive">
-                        <table className="table table-hover table-sm">
-                          <tbody>
-                            <tr>
-                              <th scope="row">Location</th>
-                              <td>{this.state.address}</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Price</th>
-                              <td>${this.state.price}</td>
-                            </tr>
-      
-                            <tr>
-                              <th scope="row">Property Type: </th>
-                              <td>House</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Status:</th>
-                              <td>{this.state.status}</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Area:</th>
-                              <td>
-                                {this.state.area} m<sup>2</sup>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Beds:</th>
-                              <td>{this.state.beds}</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Baths:</th>
-                              <td>{this.state.baths}</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Garages:</th>
-                              <td>{this.state.garages}</td>
-                            </tr>
-                            <tr>
-                              <th>Rating:</th>
-                              <td>5</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
+      let statusColor = this.state.status === "rent" ? "warning" : "success";
+      renderContent = (
+        <React.Fragment>
+          <h1 className="display-4 my-5 text-center">{this.state.title}</h1>
+          <div className="row mt-5">
+            <div className="col-lg-4 col-md-4 col-sm-12">
+              <div className="row mt-4">
+                <div className="col-lg-12 col-md-12 col-sm-12">
+                  <span className={`badge badge-${statusColor}`}>
+                    {this.state.status}
+                  </span>
+                  <img
+                    style={{ width: "360px", height: "280px" }}
+                    className="property-img"
+                    src={this.state.imgUrl}
+                    alt="Responsive"
+                  />
+                </div>
+
+                <div className="col-lg-12 col-md-12 col-sm-12">
+                  <p className="mt-3">
+                    <strong>Quick Summary:</strong>
+                  </p>
+                  <div className="table-responsive">
+                    <table className="table table-hover table-sm">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Location</th>
+                          <td>{this.state.address}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Price</th>
+                          <td>${this.state.price}</td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">Property Type: </th>
+                          <td>House</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Status:</th>
+                          <td>{this.state.status}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Area:</th>
+                          <td>
+                            {this.state.area} m<sup>2</sup>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Beds:</th>
+                          <td>{this.state.beds}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Baths:</th>
+                          <td>{this.state.baths}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Garages:</th>
+                          <td>{this.state.garages}</td>
+                        </tr>
+                        <tr>
+                          <th>Rating:</th>
+                          <td>5</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-      
-                <div className="col-lg-8  col-md-8 col-sm-12">
-                  <div className="description">
-                    <p className="mt-3 border-bottom pb-3">
-                      <strong>Property Description: </strong>
-                    </p>
-      
-                    <p>{this.state.description}</p>
-                  </div>
-      
-                  <div className="detail">
-                    <p className="mt-3 border-bottom pb-3">
-                      <strong>Property Features:</strong>{" "}
-                    </p>
-      
-                    <ul>
-                      {this.state.ac && <li>Air conditioning</li>}
-                      {this.state.gym && <li>Gym</li>}
-                      {this.state.bar && <li>Bar</li>}
-                      {this.state.internet && <li>Internet</li>}
-                      {this.state.microwave && <li>Microwave</li>}
-                      {this.state.smoking && <li>Smoking allowed</li>}
-                      {this.state.fireplace && <li>Fireplace or fire pit</li>}
-                      {this.state.toaster && <li>Toaster</li>}
-                      {this.state.tennis && <li>Tennis Courts</li>}
-                      {this.state.tv && <li>Cable TV</li>}
-                    </ul>
-                  </div>
-      
-                  {/* <div className="agent-profile my-5">
+              </div>
+            </div>
+
+            <div className="col-lg-8  col-md-8 col-sm-12">
+              <div className="description">
+                <p className="mt-3 border-bottom pb-3">
+                  <strong>Property Description: </strong>
+                </p>
+
+                <p>{this.state.description}</p>
+              </div>
+
+              <div className="detail">
+                <p className="mt-3 border-bottom pb-3">
+                  <strong>Property Features:</strong>{" "}
+                </p>
+
+                <ul>
+                  {this.state.ac && <li>Air conditioning</li>}
+                  {this.state.gym && <li>Gym</li>}
+                  {this.state.bar && <li>Bar</li>}
+                  {this.state.internet && <li>Internet</li>}
+                  {this.state.microwave && <li>Microwave</li>}
+                  {this.state.smoking && <li>Smoking allowed</li>}
+                  {this.state.fireplace && <li>Fireplace or fire pit</li>}
+                  {this.state.toaster && <li>Toaster</li>}
+                  {this.state.tennis && <li>Tennis Courts</li>}
+                  {this.state.tv && <li>Cable TV</li>}
+                </ul>
+              </div>
+
+              {/* <div className="agent-profile my-5">
                     <p className="mt-3 border-bottom pb-3">
                       <strong>Agent:</strong>
                     </p>
@@ -323,17 +319,16 @@ console.log('appy', this.state.approve);
                       </div>
                     </div>
                   </div>*/}
-                </div>
-              </div>
-      
-      
-              {/* <QuestionPage
+            </div>
+          </div>
+
+          {/* <QuestionPage
               id= {_id}
             question={question}
             answer={answer}
               /> */}
-      
-           {/* <QuesPage
+
+          {/* <QuesPage
               id= {_id}
               title={title}
               imgUrl={imgUrl}
@@ -349,34 +344,28 @@ console.log('appy', this.state.approve);
             question={question}
             answer={answer}
               /> */}
-      
-            
-      
-            </React.Fragment>
-          );
-        } else {
-            renderContent = (
-              <div
-                style={{ width: "100%", height: "100vh" }}
-                className="d-flex align-items-center justify-content-center"
-              >
-                <Spinner color="primary" />
-              </div>
-            );
-          }
-      
-          return <React.Fragment>{renderContent}</React.Fragment>;
-        }
-      }
+        </React.Fragment>
+      );
+    } else {
+      renderContent = (
+        <div
+          style={{ width: "100%", height: "100vh" }}
+          className="d-flex align-items-center justify-content-center"
+        >
+          <Spinner color="primary" />
+        </div>
+      );
+    }
 
-const mapStateToProps = state => {
+    return <React.Fragment>{renderContent}</React.Fragment>;
+  }
+}
+
+const mapStateToProps = (state) => {
   return {
     errors: state.errors,
-    property: state.property
+    property: state.property,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(Ques);
+export default connect(mapStateToProps, actions)(Ques);

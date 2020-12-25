@@ -1,0 +1,42 @@
+.Register {
+  margin: 0;
+  /* margin-top: -48px; */
+  padding: 0;
+  height: 1000px;
+  background: url("./../../../images/banneer.jpg") no-repeat;
+  opacity: 0.85;
+  background-size: cover;
+}
+.login-box {
+  width: 400px;
+  height: 600px;
+  margin-top: 400px;
+  margin-left: 200px;
+  /* padding-left: 100px; */
+  /* top: 55%; */
+  /* left: 70%; */
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(11, 65, 165);
+  background-color: white;
+  /* opacity: 0.8; */
+  color: white;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.4);
+}
+.textbox {
+  width: 70%;
+  overflow: hidden;
+  font-size: 20px;
+  padding: 0px 0;
+  /* margin: 10px; */
+  border-bottom: 1px solid rgb(11, 65, 165);
+}
+.login-box h3 {
+  float: left;
+  font-size: 40px;
+  border-bottom: 6px solid rgb(11, 65, 165);
+
+  margin-bottom: 50px;
+  padding: 13px 0;
+  color: black;
+}

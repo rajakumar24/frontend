@@ -1,6 +1,6 @@
 import React from "react";
 
-const RegistrationPageUI = props => {
+const RegistrationPageUI = (props) => {
   return (
     <div className="container">
       <div className="row my-5">

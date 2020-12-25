@@ -11,7 +11,7 @@ class RegistrationPage extends React.Component {
     email: "",
     password: "",
     password_confirmation: "",
-    errors: {}
+    errors: {},
   };
 
   componentDidMount() {
@@ -32,17 +32,17 @@ class RegistrationPage extends React.Component {
 
   onInputChange = ({ currentTarget }) => {
     this.setState({
-      [currentTarget.name]: currentTarget.value
+      [currentTarget.name]: currentTarget.value,
     });
   };
 
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
     const registrationDetail = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      password_confirmation: this.state.password_confirmation
+      password_confirmation: this.state.password_confirmation,
     };
 
     this.props.registerUser(registrationDetail, this.props.history);
@@ -99,15 +99,12 @@ class RegistrationPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     message: state.message,
     errors: state.errors,
-    auth: state.auth
+    auth: state.auth,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(RegistrationPage);
+export default connect(mapStateToProps, actions)(RegistrationPage);

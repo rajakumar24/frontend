@@ -5,7 +5,7 @@ import { Input, TextArea, SelectList, CheckBox } from "../../../components";
 // import { AgentMenu } from "..";
 import { Spinner } from "reactstrap";
 import axios from "axios";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 class AdminQuesPage extends Component {
@@ -74,7 +74,7 @@ class AdminQuesPage extends Component {
         : currentTarget.value;
 
     this.setState({
-      [currentTarget.name]: value
+      [currentTarget.name]: value,
     });
   };
 
@@ -88,12 +88,11 @@ class AdminQuesPage extends Component {
 
     // this.state.quesmark = currentTarget.value
     this.setState({
-      quesmark: currentTarget.value
+      quesmark: currentTarget.value,
     });
-
   };
 
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
 
     // const { reviewDesMark, reviewTitleMark, reviewDes, reviewTitle } = this.state;
@@ -116,7 +115,6 @@ class AdminQuesPage extends Component {
       // obej
     });
     //add
-
 
     const propertyDetails = {
       id: this.state.id,
@@ -155,27 +153,28 @@ class AdminQuesPage extends Component {
       reviewTitle: this.state.reviewTitle,
       reviewDes: this.state.reviewDes,
       // obej,
-      approve: this.state.approve
+      approve: this.state.approve,
     };
-    console.log('app', propertyDetails.approve);
+    console.log("app", propertyDetails.approve);
     // this.props.updateProperty(propertyDetails);
     //add
 
-    axios.put(`http://13.126.224.81:3001/api/property/${propertyDetails.id}`, propertyDetails)
-      .then(response => {
+    axios
+      .put(
+        `http://13.234.201.64:3001/api/property/${propertyDetails.id}`,
+        propertyDetails
+      )
+      .then((response) => {
         // setUserSession(response.data.token, response.data.user);
         console.log(response);
-        this.props.getProperty(this.props.match.params.id, this.props.history)
-
-      }).catch(error => {
+        this.props.getProperty(this.props.match.params.id, this.props.history);
+      })
+      .catch((error) => {
         console.log("Error", error);
-
       });
-
   };
 
-
-  numbersOnly = e => {
+  numbersOnly = (e) => {
     const price = e.currentTarget.value;
 
     if (isNaN(price) || price === "0") {
@@ -189,11 +188,11 @@ class AdminQuesPage extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
 
-    console.log("hi")
+    console.log("hi");
     if (Object.keys(nextProps.property.property).length > 0) {
       const property = nextProps.property.property;
       this.setState({
@@ -230,14 +229,12 @@ class AdminQuesPage extends Component {
         reviewTitle: property.reviewTitle,
         reviewDes: property.reviewDes,
         // obej: property.obej,
-        approve: property.approve
+        approve: property.approve,
       });
-
     }
   }
 
   render() {
-
     const { question, answer, id } = this.state;
     // const {obej} = this.state;
     //add
@@ -245,12 +242,11 @@ class AdminQuesPage extends Component {
     // console.log("ghfi", this.state.obej)
 
     if (this.state.redirect) {
-      console.log("Currentapprove", this.state.approve)
+      console.log("Currentapprove", this.state.approve);
       return (
         <Redirect
-
           to={{
-            pathname: '/properties-list',
+            pathname: "/properties-list",
             // state: { Currentapprove : this.state.approve },
 
             // {currentId2: id}
@@ -266,19 +262,19 @@ class AdminQuesPage extends Component {
       { label: "Select...", value: "" },
       { label: "India", value: "india" },
       { label: "USA", value: "usa" },
-      { label: "UK", value: "uk" }
+      { label: "UK", value: "uk" },
     ];
     const propertyType = [
       { label: "Select...", value: "" },
       { label: "Apartment", value: "apartment" },
       { label: "Flat", value: "flat" },
       { label: "House", value: "house" },
-      { label: "Cottage", value: "cottage" }
+      { label: "Cottage", value: "cottage" },
     ];
     const propertyStatus = [
       { label: "Select...", value: "" },
       { label: "Rent", value: "rent" },
-      { label: "Sale", value: "sale" }
+      { label: "Sale", value: "sale" },
     ];
 
     // const ApproveStatus = [
@@ -298,11 +294,13 @@ class AdminQuesPage extends Component {
             <div className="col-lg-4 col-md-4 col-sm-12">
               <div className="row mt-4">
                 <div className="col-lg-12 col-md-12 col-sm-12">
-                  <span className={`badge badge-${statusColor}`}>{this.state.status}</span>
+                  <span className={`badge badge-${statusColor}`}>
+                    {this.state.status}
+                  </span>
                   <img
                     style={{ width: "360px", height: "280px" }}
                     className="property-img"
-                    src={`http://13.126.224.81:3001/uploads/${this.state.imgUrl}`}
+                    src={`http://13.234.201.64:3001/uploads/${this.state.imgUrl}`}
                     alt="Responsive"
                   />
                 </div>
@@ -365,7 +363,6 @@ class AdminQuesPage extends Component {
                 <p className="mt-3 border-bottom pb-3">
                   <strong>Property Description: </strong>
                 </p>
-
                 <p>{this.state.description}</p>
                 {/* add */}
                 <p>{this.state.lat}</p>
@@ -374,7 +371,7 @@ class AdminQuesPage extends Component {
                 <p>{this.state.state}</p>
                 <p>{this.state.city}</p>
                 <p>{this.state.zip}</p>this.state.approve
-              <p>{this.state.propertyType}</p>
+                <p>{this.state.propertyType}</p>
                 <p>{this.state.approve}</p>
                 <p>{this.state.answer}</p>
                 {/* add */}
@@ -439,8 +436,6 @@ class AdminQuesPage extends Component {
             </div>*/}
             </div>
           </div>
-
-
 
           <form onSubmit={this.onFormSubmit}>
             {/* <div className="basic-info"> */}
@@ -766,7 +761,7 @@ class AdminQuesPage extends Component {
             <br />
             <button type="submit" className="btn btn-block btn-primary">
               Submit
-          </button>
+            </button>
             {/* <br />
             <Input
               classes="col-md-6"
@@ -809,7 +804,6 @@ class AdminQuesPage extends Component {
     return (
       <div className="container-fluid">
         <div className="row">
-
           {/* left section */}
 
           {/* <!-- right section --> */}
@@ -823,22 +817,16 @@ class AdminQuesPage extends Component {
             {renderContent}
             <br />
             <br />
-            <Link
-              to={`/agent/RateReview/${id}`}
-              className="btn btn-primary"
-            >
+            <Link to={`/agent/RateReview/${id}`} className="btn btn-primary">
               <i className="fa fa-edit" /> Rate&Review
-                          </Link>
+            </Link>
             {/* add */}
-            {
-              question != null && 
+            {question != null &&
               question.map((list, index) => {
-
                 // obej.length && obej.map((list, index) => {
 
                 // console.log("list", list);
                 return (
-
                   <div className="container" key={index}>
                     {/* <p>question: {list.question}</p> */}
                     <p>question: {list}</p>
@@ -846,8 +834,7 @@ class AdminQuesPage extends Component {
                     {/* <p>answer: {list.answer}</p> */}
                   </div>
                 );
-              })
-            }
+              })}
             {/* {
               reviewTitle.length && reviewTitle.map((listss, index) => {             
                 return (
@@ -874,7 +861,6 @@ class AdminQuesPage extends Component {
               })
             } */}
             {/* add */}
-
           </div>
           {/* <p>question: {this.state.question}</p>
           <p>answer: {this.state.answer}</p> */}
@@ -884,14 +870,11 @@ class AdminQuesPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     errors: state.errors,
-    property: state.property
+    property: state.property,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(AdminQuesPage);
+export default connect(mapStateToProps, actions)(AdminQuesPage);

@@ -46,7 +46,7 @@ class App extends Component {
             <ToastContainer />
             <Header className= "Fixed"/>
             <Routes />
-            <Footer />
+            {/* <Footer /> */}
           </React.Fragment>
         </BrowserRouter>
       </Provider>

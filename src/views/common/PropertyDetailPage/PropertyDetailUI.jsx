@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import QuestionPage from "./QuestionPage"
+import QuestionPage from "./QuestionPage";
 //import { TextArea } from "../../../components/";QuesPage
-import QuesPage from "./QuestionPages"
+import QuesPage from "./QuestionPages";
 import { CardSix } from "../../../components";
 
 class PropertyDetailUI extends React.Component {
@@ -29,12 +29,12 @@ class PropertyDetailUI extends React.Component {
       state,
       city,
       zip,
-      propertyType
+      propertyType,
     } = this.props.property;
 
     let renderContent;
     const { _id, email, name } = this.props.property.user;
-    console.log("puppy", this.props.agent)
+    console.log("puppy", this.props.agent);
     const { about, mobile, skype } = this.props.agent;
     const { img } = this.props.agent.imgUrl;
     let statusColor = status === "rent" ? "warning" : "success";
@@ -51,7 +51,7 @@ class PropertyDetailUI extends React.Component {
                 <img
                   style={{ width: "360px", height: "280px" }}
                   className="property-img"
-                  src={`http://13.126.224.81:3001/uploads/${imgUrl}`}
+                  src={`http://13.234.201.64:3001/uploads/${imgUrl}`}
                   alt="Responsive"
                 />
               </div>
@@ -144,12 +144,10 @@ class PropertyDetailUI extends React.Component {
               <div className="d-flex flex-row border rounded">
                 <div className="p-0 w-25">
                   <img
-
-                    src={`http://13.126.224.81:3001/uploads/${img}`}
+                    src={`http://13.234.201.64:3001/uploads/${img}`}
                     className="img-thumbnail border-0"
                     alt=""
                   />
-
                 </div>
                 <div className="pl-3 pt-2 pr-2 pb-2 w-75 border-left">
                   <h4 className="name text-primary">{name}</h4>
@@ -179,7 +177,6 @@ class PropertyDetailUI extends React.Component {
             </div>
           </div>
         </div>
-
 
         {/* <QuestionPage
         id= {_id}
@@ -253,11 +250,8 @@ class PropertyDetailUI extends React.Component {
           toaster={features.toaster}
           tennis={features.tennis}
           tv={features.tv}
-        // features={features}
+          // features={features}
         />
-
-
-
       </React.Fragment>
     );
 

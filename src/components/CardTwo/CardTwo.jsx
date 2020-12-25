@@ -17,7 +17,7 @@ class CardTwo extends React.Component {
       area,
       beds,
       baths,
-      garages
+      garages,
     } = this.props;
     let statusColor = status === "rent" ? "warning" : "success";
 
@@ -29,8 +29,11 @@ class CardTwo extends React.Component {
               <h4>{title}</h4>
               <span className={`badge badge-${statusColor}`}>{status}</span>
 
-            
-              <img className="card-img-top" src={`http://13.126.224.81:3001/uploads/${imgUrl}`} alt="Card cap" />
+              <img
+                className="card-img-top"
+                src={`http://13.234.201.64:3001/uploads/${imgUrl}`}
+                alt="Card cap"
+              />
             </div>
             <div className="col-lg-8 col-md-8  col-sm-8">
               <strong>Address:</strong>
