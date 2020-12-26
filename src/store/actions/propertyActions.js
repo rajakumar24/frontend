@@ -21,7 +21,7 @@ export const addProperty = (propertyDetails) => async (dispatch) => {
   });
   try {
     const res = await axios.post(
-      "https://13.234.201.64:3001/api/property/add",
+      "https://13.234.201.64/api/property/add",
       propertyDetails
     );
 
@@ -54,7 +54,7 @@ export const addAdminProperty = (propertyDetails) => async (dispatch) => {
   });
   try {
     const res = await axios.post(
-      "https://13.234.201.64:3001/api/property/AdminMaster",
+      "https://13.234.201.64/api/property/AdminMaster",
       propertyDetails
     );
 
@@ -85,7 +85,7 @@ export const updateProperty = (propertyDetails) => async (dispatch) => {
   // const property = await axios.post("/api/property/update", propertyDetails);
   try {
     const property = await axios.post(
-      "https://13.234.201.64:3001/api/property/update",
+      "https://13.234.201.64/api/property/update",
       propertyDetails
     );
     dispatch({
@@ -102,7 +102,7 @@ export const updateProperty = (propertyDetails) => async (dispatch) => {
 
 export const deleteProperty = (id) => async (dispatch) => {
   try {
-    await axios.delete("https://13.234.201.64:3001/api/property/delete", {
+    await axios.delete("https://13.234.201.64/api/property/delete", {
       params: {
         id: id,
       },
@@ -128,18 +128,15 @@ export const getAllProperties = (
 
   try {
     const propertiesList = await axios.get(
-      "https://13.234.201.64:3001/api/property/all",
+      "https://13.234.201.64/api/property/all",
       {
         params: { currentPage, pageSize, selectedFilter },
       }
     );
 
-    const totalCount = await axios.get(
-      "https://13.234.201.64:3001/api/property/",
-      {
-        params: { filter: selectedFilter },
-      }
-    );
+    const totalCount = await axios.get("https://13.234.201.64/api/property/", {
+      params: { filter: selectedFilter },
+    });
 
     dispatch({
       type: SET_TOTAL_COUNT,
@@ -160,12 +157,10 @@ export const getAllProperties = (
 
 export const getProperty = (id, history) => async (dispatch) => {
   try {
-    let property = await axios.get(
-      `https://13.234.201.64:3001/api/property/${id}`
-    );
+    let property = await axios.get(`https://13.234.201.64/api/property/${id}`);
 
     const profile = await axios.get(
-      `https://13.234.201.64:3001/api/profile/${property.data.user._id}`
+      `https://13.234.201.64/api/profile/${property.data.user._id}`
     );
 
     dispatch({

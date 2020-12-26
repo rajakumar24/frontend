@@ -30,7 +30,7 @@ class QuestionPage extends React.Component {
     console.log("skddj", id);
     // this.props.addProperty(propertyDetails);
     axios
-      .post(`https://13.234.201.64:3001/api/property/${id}`, propertyDetails)
+      .post(`https://13.234.201.64/api/property/${id}`, propertyDetails)
       .then((response) => {
         console.log(response);
       })

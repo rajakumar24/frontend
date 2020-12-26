@@ -72,7 +72,7 @@ class App extends React.Component {
     // console.log("code", textDetails.countryCode)
     console.log("code", countryCodeValue);
     await axios
-      .get("https://13.234.201.64:3001/api/profile/otp", {
+      .get("https://13.234.201.64/api/profile/otp", {
         params: {
           email: email,
           phone: phone,
@@ -99,7 +99,7 @@ class App extends React.Component {
     const { id, token } = this.state;
     // console.log("iddd", id)
     await axios
-      .get("https://13.234.201.64:3001/api/profile/verify", {
+      .get("https://13.234.201.64/api/profile/verify", {
         params: {
           id: id,
           token: token,

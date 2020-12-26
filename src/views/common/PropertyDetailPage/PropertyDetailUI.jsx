@@ -51,7 +51,7 @@ class PropertyDetailUI extends React.Component {
                 <img
                   style={{ width: "360px", height: "280px" }}
                   className="property-img"
-                  src={`https://13.234.201.64:3001/uploads/${imgUrl}`}
+                  src={`https://13.234.201.64/uploads/${imgUrl}`}
                   alt="Responsive"
                 />
               </div>
@@ -144,7 +144,7 @@ class PropertyDetailUI extends React.Component {
               <div className="d-flex flex-row border rounded">
                 <div className="p-0 w-25">
                   <img
-                    src={`https://13.234.201.64:3001/uploads/${img}`}
+                    src={`https://13.234.201.64/uploads/${img}`}
                     className="img-thumbnail border-0"
                     alt=""
                   />
