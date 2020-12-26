@@ -489,7 +489,7 @@ class AdminQuesPage extends Component {
 
             <a
               className="bg-primary text-white ml-3 px-2"
-              href="httpss://www.latlong.net/"
+              href="https://www.latlong.net/"
               target="_blank"
               rel="noopener noreferrer"
             >

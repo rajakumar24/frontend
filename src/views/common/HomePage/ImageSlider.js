@@ -5,7 +5,7 @@ import "./HomePage.css";
 class ImageSlider extends React.Component {
   state = {
     img:
-      "httpss://images.unsplash.com/photo-1560184897-1ca2636ec816?ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80",
+      "https://images.unsplash.com/photo-1560184897-1ca2636ec816?ixlib=rb-1.2.1&auto=format&fit=crop&w=1502&q=80",
 
     // img: "httpss://images.unsplash.com/photo-1505873242700-f289a29e1e0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80"
   };
@@ -21,7 +21,7 @@ class ImageSlider extends React.Component {
           onMouseEnter={() => {
             this.setState({
               img:
-                "httpss://images.unsplash.com/photo-1505873242700-f289a29e1e0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80",
+                "https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80",
 
               // img: "httpss://images.unsplash.com/photo-1570544820446-1690843de6ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
             });
@@ -29,7 +29,7 @@ class ImageSlider extends React.Component {
           onMouseOut={() => {
             this.setState({
               img:
-                "httpss://images.unsplash.com/photo-1560185007-c5ca9d2c014d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+                "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
             });
           }}
         />
