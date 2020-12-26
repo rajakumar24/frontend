@@ -15,7 +15,7 @@ export const updateProfile = (profileDetails) => async (dispatch) => {
   });
   try {
     const profile = await axios.post(
-      "http://13.234.201.64:3001/api/profile/update",
+      "https://13.234.201.64:3001/api/profile/update",
       profileDetails
     );
     dispatch({
@@ -38,11 +38,11 @@ export const updateProfile = (profileDetails) => async (dispatch) => {
 export const getProfile = (id, history) => async (dispatch) => {
   try {
     const profile = await axios.get(
-      `http://13.234.201.64:3001/api/profile/${id}`
+      `https://13.234.201.64:3001/api/profile/${id}`
     );
 
     const propertyList = await axios.get(
-      `http://13.234.201.64:3001/api/user/property/${id}`
+      `https://13.234.201.64:3001/api/user/property/${id}`
     );
 
     dispatch({
@@ -63,7 +63,7 @@ export const getProfile = (id, history) => async (dispatch) => {
 export const getCurrentProfile = () => async (dispatch) => {
   try {
     const profileData = await axios.get(
-      "http://13.234.201.64:3001/api/profile/user/current"
+      "https://13.234.201.64:3001/api/profile/user/current"
     );
 
     dispatch({
@@ -85,14 +85,14 @@ export const getUserPropertyList = (currentPage, pageSize) => async (
 ) => {
   try {
     const propertiesList = await axios.get(
-      "http://13.234.201.64:3001/api/user/property/all",
+      "https://13.234.201.64:3001/api/user/property/all",
       {
         params: { currentPage, pageSize },
       }
     );
 
     const totalCount = await axios.get(
-      "http://13.234.201.64:3001/api/user/propertyCount"
+      "https://13.234.201.64:3001/api/user/propertyCount"
     );
 
     dispatch({

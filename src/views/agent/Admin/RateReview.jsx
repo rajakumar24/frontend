@@ -144,7 +144,7 @@ class RateReview extends Component {
 
     axios
       .put(
-        `http://13.234.201.64:3001/api/property/${propertyDetails.id}`,
+        `https://13.234.201.64:3001/api/property/${propertyDetails.id}`,
         propertyDetails
       )
       .then((response) => {
@@ -289,7 +289,7 @@ class RateReview extends Component {
                   <img
                     style={{ width: "360px", height: "280px" }}
                     className="property-img"
-                    src={`http://13.234.201.64:3001/uploads/${this.state.imgUrl}`}
+                    src={`https://13.234.201.64:3001/uploads/${this.state.imgUrl}`}
                     alt="Responsive"
                   />
                 </div>
@@ -479,7 +479,7 @@ class RateReview extends Component {
 
             <a
               className="bg-primary text-white ml-3 px-2"
-              href="https://www.latlong.net/"
+              href="httpss://www.latlong.net/"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -5,7 +5,7 @@ import { Input, TextArea, SelectList, CheckBox } from "../../../components";
 // import { AgentMenu } from "..";
 import { Spinner } from "reactstrap";
 import axios from "axios";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 
 class AdminMasterPropertyPage extends Component {
   state = {
@@ -40,7 +40,7 @@ class AdminMasterPropertyPage extends Component {
     loading: false,
     redirect: false,
     approve: "",
-    errors: {}
+    errors: {},
   };
 
   componentWillMount() {
@@ -57,7 +57,7 @@ class AdminMasterPropertyPage extends Component {
         : currentTarget.value;
 
     this.setState({
-      [currentTarget.name]: value
+      [currentTarget.name]: value,
     });
     //add
     // this.setState({
@@ -66,16 +66,16 @@ class AdminMasterPropertyPage extends Component {
     //add
   };
 
-  onFormSubmit = e => {
+  onFormSubmit = (e) => {
     e.preventDefault();
 
-//add
-this.setState({
-  redirect: true,
-  // approve: "Approved"
-});
-//add
-console.log('appy', this.state.approve);
+    //add
+    this.setState({
+      redirect: true,
+      // approve: "Approved"
+    });
+    //add
+    console.log("appy", this.state.approve);
 
     const propertyDetails = {
       id: this.state.id,
@@ -106,40 +106,39 @@ console.log('appy', this.state.approve);
       toaster: this.state.toaster,
       tennis: this.state.tennis,
       tv: this.state.tv,
-      approve: this.state.approve
+      approve: this.state.approve,
     };
-    console.log('app', propertyDetails.approve);
+    console.log("app", propertyDetails.approve);
     this.props.addAdminProperty(propertyDetails);
     //add
 
     // axios.put(`/api/property/${propertyDetails.id}`, propertyDetails)
     // .then(response => {
-      
+
     //     console.log(response);
     // }).catch(error => {
     //     console.log("Error", error);
 
     // });
-
   };
 
   //add
   // const red = this.state.redirect;
-  
-//   if (this.state.redirect === true) {
-//     return (
-//         <Redirect
 
-//             to={{
-//                 pathname: '/Admin',
-              
-//             }}
-//         />
-//     );
-// }
-//add
+  //   if (this.state.redirect === true) {
+  //     return (
+  //         <Redirect
 
-  numbersOnly = e => {
+  //             to={{
+  //                 pathname: '/Admin',
+
+  //             }}
+  //         />
+  //     );
+  // }
+  //add
+
+  numbersOnly = (e) => {
     const price = e.currentTarget.value;
 
     if (isNaN(price) || price === "0") {
@@ -153,7 +152,7 @@ console.log('appy', this.state.approve);
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
 
@@ -188,31 +187,29 @@ console.log('appy', this.state.approve);
         toaster: property.features.toaster,
         tennis: property.features.tennis,
         tv: property.features.tv,
-        approve: property.approve
+        approve: property.approve,
       });
     }
   }
 
   render() {
+    //add
+    // const red = this.state.redirect;
 
- //add
-  // const red = this.state.redirect;
-  
-  if (this.state.redirect) {
-    console.log("Currentapprove", this.state.approve)
-    return (
+    if (this.state.redirect) {
+      console.log("Currentapprove", this.state.approve);
+      return (
         <Redirect
+          to={{
+            pathname: "/Admin",
+            // state: { Currentapprove : this.state.approve },
 
-            to={{
-                pathname: '/Admin',
-                // state: { Currentapprove : this.state.approve },
-               
-                // {currentId2: id}
-            }}
+            // {currentId2: id}
+          }}
         />
-    );
-}
-//add
+      );
+    }
+    //add
 
     const { property } = this.props.property;
 
@@ -220,19 +217,19 @@ console.log('appy', this.state.approve);
       { label: "Select...", value: "" },
       { label: "India", value: "india" },
       { label: "USA", value: "usa" },
-      { label: "UK", value: "uk" }
+      { label: "UK", value: "uk" },
     ];
     const propertyType = [
       { label: "Select...", value: "" },
       { label: "Apartment", value: "apartment" },
       { label: "Flat", value: "flat" },
       { label: "House", value: "house" },
-      { label: "Cottage", value: "cottage" }
+      { label: "Cottage", value: "cottage" },
     ];
     const propertyStatus = [
       { label: "Select...", value: "" },
       { label: "Rent", value: "rent" },
-      { label: "Sale", value: "sale" }
+      { label: "Sale", value: "sale" },
     ];
 
     // const ApproveStatus = [
@@ -297,7 +294,7 @@ console.log('appy', this.state.approve);
 
             <a
               className="bg-primary text-white ml-3 px-2"
-              href="https://www.latlong.net/"
+              href="httpss://www.latlong.net/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -534,9 +531,8 @@ console.log('appy', this.state.approve);
                 checked={this.state.tv}
               />
             </div>
-           
           </div>
-          <br/>
+          <br />
           {/* <SelectList
                 classes="col-md-6"
                 options={ApproveStatus}
@@ -546,16 +542,16 @@ console.log('appy', this.state.approve);
                 value={this.state.approve}
                 error={this.props.errors.approve}
               /> */}
-               <Input
-                classes="col-md-6"
-                label="approve"
-                name="approve"
-                placeholder="approve..."
-                onChange={this.handleInputChange}
-                value={this.state.approve}
-                error={this.props.errors.approve}
-              />
-              <br/>
+          <Input
+            classes="col-md-6"
+            label="approve"
+            name="approve"
+            placeholder="approve..."
+            onChange={this.handleInputChange}
+            value={this.state.approve}
+            error={this.props.errors.approve}
+          />
+          <br />
           <button type="submit" className="btn btn-block btn-primary">
             Submit
           </button>
@@ -593,14 +589,11 @@ console.log('appy', this.state.approve);
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     errors: state.errors,
-    property: state.property
+    property: state.property,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(AdminMasterPropertyPage);
+export default connect(mapStateToProps, actions)(AdminMasterPropertyPage);

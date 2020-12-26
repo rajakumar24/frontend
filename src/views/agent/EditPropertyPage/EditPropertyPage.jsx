@@ -135,7 +135,7 @@ class EditPropertyPage extends Component {
     // this.props.updateProperty(propertyDetails);
     axios
       .put(
-        `http://13.234.201.64:3001/api/property/${propertyDetails.id}`,
+        `https://13.234.201.64:3001/api/property/${propertyDetails.id}`,
         propertyDetails
       )
       .then((response) => {
@@ -285,7 +285,7 @@ class EditPropertyPage extends Component {
 
             <a
               className="bg-primary text-white ml-3 px-2"
-              href="https://www.latlong.net/"
+              href="httpss://www.latlong.net/"
               target="_blank"
               rel="noopener noreferrer"
             >

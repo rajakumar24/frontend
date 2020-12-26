@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
     //   loading: true,
     // });
 
-    // axios.get('http://13.234.201.64:3001/api/profile/imagePost').then(({ data }) => {
+    // axios.get('https://13.234.201.64:3001/api/profile/imagePost').then(({ data }) => {
     //   this.setState({
     //     images: [...data, ...this.state.images],
     //     loading: false,
@@ -132,7 +132,7 @@ class Dashboard extends React.Component {
     );
 
     axios
-      .post("http://13.234.201.64:3001/api/profile/imageUpdate", formData)
+      .post("https://13.234.201.64:3001/api/profile/imageUpdate", formData)
       .then(({ data }) => {
         console.log("data", data.fileName);
         this.setState({
@@ -241,7 +241,7 @@ class Dashboard extends React.Component {
                           return (
                             <img
                               key={i}
-                              src={`http://13.234.201.64:3001/uploads/${url}`}
+                              src={`https://13.234.201.64:3001/uploads/${url}`}
                             />
                           );
                         })}
