@@ -114,7 +114,7 @@ class AdminPropertyPage extends Component {
 
     axios
       .put(
-        `https://13.234.201.64/api/property/${propertyDetails.id}`,
+        `https://getrightproperty.com:3001/api/property/${propertyDetails.id}`,
         propertyDetails
       )
       .then((response) => {

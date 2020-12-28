@@ -45,12 +45,12 @@ class CardFive extends React.Component {
               {/* <img className="card-img-top" src={imgUrl} alt="Card cap" /> */}
 
               {/* {imgUrl.map((url, i) => {
-                return <img className="card-img-top" key={i} src={`https://13.234.201.64/uploads/${url}`} />
+                return <img className="card-img-top" key={i} src={`https://getrightproperty.com:3001/uploads/${url}`} />
               })} */}
 
               <img
                 className="card-img-top"
-                src={`https://13.234.201.64/uploads/${imgUrl}`}
+                src={`https://getrightproperty.com:3001/uploads/${imgUrl}`}
               />
             </div>
             <div className="col-lg-8 col-md-8  col-sm-8">
