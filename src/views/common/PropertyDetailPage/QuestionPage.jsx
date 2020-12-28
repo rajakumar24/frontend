@@ -31,7 +31,7 @@ class QuestionPage extends React.Component {
     // this.props.addProperty(propertyDetails);
     axios
       .post(
-        `https://getrightproperty.com:3001/api/property/${id}`,
+        `http://getrightproperty.com:3001/api/property/${id}`,
         propertyDetails
       )
       .then((response) => {

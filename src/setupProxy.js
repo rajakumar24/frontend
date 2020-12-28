@@ -1,63 +1,63 @@
-const proxy = require("https-proxy-middleware");
+const proxy = require("http-proxy-middleware");
 
 module.exports = function (app) {
   app.use(
-    proxy("/api/user/*", { target: "https://getrightproperty.com:3001/" })
+    proxy("/api/user/*", { target: "http://getrightproperty.com:3001/" })
   );
   app.use(
     proxy("/api/user/property/*", {
-      target: "https://getrightproperty.com:3001/",
+      target: "http://getrightproperty.com:3001/",
     })
   );
   app.use(
-    proxy("/api/profile/*", { target: "https://getrightproperty.com:3001/" })
+    proxy("/api/profile/*", { target: "http://getrightproperty.com:3001/" })
   );
   app.use(
     proxy("/api/user/propertyCount", {
-      target: "https://getrightproperty.com:3001/",
+      target: "http://getrightproperty.com:3001/",
     })
   );
   app.use(
-    proxy("/api/profile/*", { target: "https://getrightproperty.com:3001/" })
+    proxy("/api/profile/*", { target: "http://getrightproperty.com:3001/" })
   );
   app.use(
     proxy("/api/profile/user/current", {
-      target: "https://getrightproperty.com:3001/",
+      target: "http://getrightproperty.com:3001/",
     })
   );
 
   app.use(
     proxy("/api/profile/user/*", {
-      target: "https://getrightproperty.com:3001/",
+      target: "http://getrightproperty.com:3001/",
     })
   );
   app.use(
     proxy("/api/profile/user/property/*", {
-      target: "https://getrightproperty.com:3001/",
+      target: "http://getrightproperty.com:3001/",
     })
   );
   app.use(
     proxy("/api/profile/user/property/count", {
-      target: "https://getrightproperty.com:3001/",
+      target: "http://getrightproperty.com:3001/",
     })
   );
   app.use(
-    proxy("/api/property/all", { target: "https://getrightproperty.com:3001/" })
+    proxy("/api/property/all", { target: "http://getrightproperty.com:3001/" })
   );
   app.use(
-    proxy("/api/property/", { target: "https://getrightproperty.com:3001/" })
+    proxy("/api/property/", { target: "http://getrightproperty.com:3001/" })
   );
   app.use(
-    proxy("/api/property/add", { target: "https://getrightproperty.com:3001/" })
+    proxy("/api/property/add", { target: "http://getrightproperty.com:3001/" })
   );
   app.use(
     proxy("/api/property/update/", {
-      target: "https://getrightproperty.com:3001/",
+      target: "http://getrightproperty.com:3001/",
     })
   );
   app.use(
     proxy("/api/property/delete/*", {
-      target: "https://getrightproperty.com:3001/",
+      target: "http://getrightproperty.com:3001/",
     })
   );
 };

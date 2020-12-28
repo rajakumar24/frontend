@@ -50,7 +50,7 @@ export default class resetPassword extends Component {
     // console.log(data)
     axios
       .post(
-        "https://getrightproperty.com:3001/api/user/updatePassword",
+        "http://getrightproperty.com:3001/api/user/updatePassword",
         this.state
       )
       .then((result) => {

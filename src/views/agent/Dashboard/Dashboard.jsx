@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
     //   loading: true,
     // });
 
-    // axios.get('https://getrightproperty.com:3001/api/profile/imagePost').then(({ data }) => {
+    // axios.get('http://getrightproperty.com:3001/api/profile/imagePost').then(({ data }) => {
     //   this.setState({
     //     images: [...data, ...this.state.images],
     //     loading: false,
@@ -133,7 +133,7 @@ class Dashboard extends React.Component {
 
     axios
       .post(
-        "https://getrightproperty.com:3001/api/profile/imageUpdate",
+        "http://getrightproperty.com:3001/api/profile/imageUpdate",
         formData
       )
       .then(({ data }) => {
@@ -244,7 +244,7 @@ class Dashboard extends React.Component {
                           return (
                             <img
                               key={i}
-                              src={`https://getrightproperty.com:3001/uploads/${url}`}
+                              src={`http://getrightproperty.com:3001/uploads/${url}`}
                             />
                           );
                         })}

@@ -31,7 +31,7 @@ class CardOne extends React.Component {
         <img
           className="card-img-top"
           style={{ width: "100%", height: "250px" }}
-          src={`https://getrightproperty.com:3001/uploads/${img}`}
+          src={`http://getrightproperty.com:3001/uploads/${img}`}
         />
         <div className="card-body">
           <h5 className="card-title">

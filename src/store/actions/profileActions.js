@@ -15,7 +15,7 @@ export const updateProfile = (profileDetails) => async (dispatch) => {
   });
   try {
     const profile = await axios.post(
-      "https://getrightproperty.com:3001/api/profile/update",
+      "http://getrightproperty.com:3001/api/profile/update",
       profileDetails
     );
     dispatch({
@@ -38,11 +38,11 @@ export const updateProfile = (profileDetails) => async (dispatch) => {
 export const getProfile = (id, history) => async (dispatch) => {
   try {
     const profile = await axios.get(
-      `https://getrightproperty.com:3001/api/profile/${id}`
+      `http://getrightproperty.com:3001/api/profile/${id}`
     );
 
     const propertyList = await axios.get(
-      `https://getrightproperty.com:3001/api/user/property/${id}`
+      `http://getrightproperty.com:3001/api/user/property/${id}`
     );
 
     dispatch({
@@ -63,7 +63,7 @@ export const getProfile = (id, history) => async (dispatch) => {
 export const getCurrentProfile = () => async (dispatch) => {
   try {
     const profileData = await axios.get(
-      "https://getrightproperty.com:3001/api/profile/user/current"
+      "http://getrightproperty.com:3001/api/profile/user/current"
     );
 
     dispatch({
@@ -85,14 +85,14 @@ export const getUserPropertyList = (currentPage, pageSize) => async (
 ) => {
   try {
     const propertiesList = await axios.get(
-      "https://getrightproperty.com:3001/api/user/property/all",
+      "http://getrightproperty.com:3001/api/user/property/all",
       {
         params: { currentPage, pageSize },
       }
     );
 
     const totalCount = await axios.get(
-      "https://getrightproperty.com:3001/api/user/propertyCount"
+      "http://getrightproperty.com:3001/api/user/propertyCount"
     );
 
     dispatch({

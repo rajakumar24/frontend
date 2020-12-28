@@ -73,7 +73,7 @@ class AddPropertyPage extends Component {
   //     loading: true,
   //   });
 
-  //   axios.get('https://getrightproperty.com:3001/api/property/getImages').then(({ data }) => {
+  //   axios.get('http://getrightproperty.com:3001/api/property/getImages').then(({ data }) => {
   //     this.setState({
   //       images: [...data, ...this.state.images],
   //       loading: false,
@@ -136,7 +136,7 @@ class AddPropertyPage extends Component {
     formData.append("image", this.state.selectedFile, this.state.Imagename);
 
     axios
-      .post("https://getrightproperty.com:3001/api/property/upload", formData)
+      .post("http://getrightproperty.com:3001/api/property/upload", formData)
       .then(({ data }) => {
         console.log("data", data);
         this.setState({
@@ -332,7 +332,7 @@ class AddPropertyPage extends Component {
                 <strong className="text-muted">Location</strong>
                 <a
                   className="bg-primary text-white ml-3 px-2"
-                  href="https://www.latlong.net/"
+                  href="http://www.latlong.net/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -623,7 +623,7 @@ class AddPropertyPage extends Component {
                   return (
                     <img
                       key={i}
-                      src={`https://getrightproperty.com:3001/uploads/${url}`}
+                      src={`http://getrightproperty.com:3001/uploads/${url}`}
                     />
                   );
                 })}

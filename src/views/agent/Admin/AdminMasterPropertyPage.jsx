@@ -294,7 +294,7 @@ class AdminMasterPropertyPage extends Component {
 
             <a
               className="bg-primary text-white ml-3 px-2"
-              href="https://www.latlong.net/"
+              href="http://www.latlong.net/"
               target="_blank"
               rel="noopener noreferrer"
             >

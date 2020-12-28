@@ -20,7 +20,7 @@ class AgentProfileUI extends React.Component {
           <div className="d-flex flex-row border rounded">
             <div className="p-0 w-25">
               <img
-                src={`https://getrightproperty.com:3001/uploads/${imgUrl}`}
+                src={`http://getrightproperty.com:3001/uploads/${imgUrl}`}
                 className="img-thumbnail border-0"
                 alt=""
               />
@@ -61,7 +61,7 @@ class AgentProfileUI extends React.Component {
                             target="_blank"
                             href={
                               socialMedia.facebook === ""
-                                ? "https://www.facebook.com"
+                                ? "http://www.facebook.com"
                                 : socialMedia.facebook
                             }
                             className="btn btn-primary"
@@ -78,7 +78,7 @@ class AgentProfileUI extends React.Component {
                             target="_blank"
                             href={
                               socialMedia.twitter === ""
-                                ? "https://www.twitter.com"
+                                ? "http://www.twitter.com"
                                 : socialMedia.twitter
                             }
                             className="btn btn-sm btn-primary"
@@ -95,7 +95,7 @@ class AgentProfileUI extends React.Component {
                             target="_blank"
                             href={
                               socialMedia.linkedin === ""
-                                ? "https://www.linkedin.com"
+                                ? "http://www.linkedin.com"
                                 : socialMedia.linkedin
                             }
                             className="btn btn-sm btn-primary"

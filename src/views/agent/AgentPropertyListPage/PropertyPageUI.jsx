@@ -38,7 +38,7 @@ class PropertyPageUI extends React.Component {
                         </p>
 
                         <img
-                          src={`https://getrightproperty.com:3001/uploads/${property.imgUrl}`}
+                          src={`http://getrightproperty.com:3001/uploads/${property.imgUrl}`}
                           style={{ width: "150px", height: "100px" }}
                           className=" img-thumbnail border-0"
                           alt=""

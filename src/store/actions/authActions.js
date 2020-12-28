@@ -19,7 +19,7 @@ export const registerUser = (userData, history) => async (dispatch) => {
   });
   try {
     const res = await axios.post(
-      "https://getrightproperty.com:3001/api/user/register",
+      "http://getrightproperty.com:3001/api/user/register",
       userData
     );
 
@@ -47,7 +47,7 @@ export const loginUser = (userData) => async (dispatch) => {
   });
   try {
     const res = await axios.post(
-      "https://getrightproperty.com:3001/api/user/login",
+      "http://getrightproperty.com:3001/api/user/login",
       userData
     );
     if (res.data) {

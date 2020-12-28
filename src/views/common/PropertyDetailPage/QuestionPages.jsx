@@ -137,7 +137,7 @@ class QuesPage extends Component {
     console.log("idd", id);
     axios
       .put(
-        `https://getrightproperty.com:3001/api/property/${id}`,
+        `http://getrightproperty.com:3001/api/property/${id}`,
         propertyDetails
       )
       .then((response) => {
